@@ -27,3 +27,6 @@ Rename-Item "genius-spicetify" genius
 spicetify config custom_apps genius
 spicetify apply
 ```
+
+## Disclaimer
+This app assets were taken from `lyrics` app from Spotify team and modified by me. I do not own any of these code and they should not be reused anywhere else.
