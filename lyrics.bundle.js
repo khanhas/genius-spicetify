@@ -50,6 +50,11 @@ f.prototype.init = function(e){
     
     function getChildDeep(parent, isDeep = false) {
         let acc = "";
+
+        if (!parent.children) {
+            return acc;
+        }
+
         for (const child of parent.children) {
             if (typeof child == "string") {
                 acc += child;
@@ -63,17 +68,44 @@ f.prototype.init = function(e){
         return acc.trim();
     }
 
-    async function getNote(el) {
-        const url = `https://genius.com/api/annotations/${el.getAttribute("data-id")}`;
-        o.resolver.get(url, (error, geniusNote) => {
-            if (error) {
-                return;
-            }
+    function getJSON(url) {
+        return new Promise((resolve, reject) => {
+            o.resolver.get(url, (error, result) => {
+                if (error) {
+                    reject(error);
+                }
+    
+                resolve(JSON.parse(result._body).response);
+            });
+        });
+    }
 
-            let note = getChildDeep(JSON.parse(geniusNote._body).response.annotation.body.dom);
-            // console.log(note)
-            el.setAttribute("data-tooltip", note);
-        })
+    async function getNote(el) {
+        const id = el.getAttribute("data-id");
+        const response = await getJSON(`https://genius.com/api/annotations/${id}`);
+            
+        let note = "";
+
+        // Authors annotations
+        if (response.referent && response.referent.classification == "verified") {
+            const referents = await getJSON(`https://genius.com/api/referents/${id}`);
+            for (const ref of referents.referent.annotations) {
+                note += getChildDeep(ref.body.dom);
+            }
+        }
+        
+        // Users annotations
+        if (!note && response.annotation) {
+            note = getChildDeep(response.annotation.body.dom);
+        }
+
+        // Users comments
+        if (!note && response.annotation && response.annotation.top_comment) {
+            note += getChildDeep(response.annotation.top_comment.body.dom);
+        }
+
+        // console.log(note)
+        el.setAttribute("data-tooltip", note);
     }
 
     const lyricObserver = new window.MutationObserver(changed => {
