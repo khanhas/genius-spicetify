@@ -4,24 +4,13 @@
 }
 
 .attribution-container {
-    position: fixed;
-    bottom: 0;
+    top: 48px;
     z-index: 1;
     height: 1em;
-    opacity: .4;
-    color: var(--modspotify_main_fg)
-}
-
-.attribution-container {
-    margin: 1em 2em
-}
-
-.attribution-container {
-    left: 0
-}
-
-.attribution-container.nolyrics {
-    display: none
+    color: var(--modspotify_main_fg);
+    margin: 1em 2em;
+    font-size: x-large;
+    font-weight: 300;
 }
 
 .lyrics-header .track {
@@ -39,6 +28,10 @@
     right: 0
 }
 
+.lyrics-color-container.message-background {
+    background-color: #165579;
+}
+
 .online-container {
     color: var(--modspotify_main_fg);
     font-weight: 700;
@@ -53,16 +46,27 @@
     right: 0
 }
 
-.lyrics-lines-container {
+.lyrics-lines-container,
+.message-container {
     position: absolute;
     top: 40%;
     bottom: 0;
     left: 0;
-    right: 0
+    right: 0;
+}
+
+.message-container{
+    z-index: 1;
+}
+
+.message-container {
+    color: #FFFFFF !important;
 }
 
 .lyrics-lines-container h1,
-.lyrics-lines-container .lyrics-list-full {
+.lyrics-lines-container p,
+.lyrics-lines-container .lyrics-list-full,
+.message-container h1 {
     font-size: 36px;
     line-height: 54px;
     min-height: 36px
@@ -70,7 +74,9 @@
 
 @media (min-width:820px) and (min-height:768px) {
     .lyrics-lines-container h1,
-    .lyrics-lines-container .lyrics-list-full {
+    .lyrics-lines-container p,
+    .lyrics-lines-container .lyrics-list-full,
+    .message-container h1 {
         font-size: 36px;
         line-height: 68px;
         min-height: 36px
@@ -79,7 +85,9 @@
 
 @media (min-width:1280px) and (min-height:768px) {
     .lyrics-lines-container h1,
-    .lyrics-lines-container .lyrics-list-full {
+    .lyrics-lines-container p,
+    .lyrics-lines-container .lyrics-list-full,
+    .message-container h1 {
         font-size: 48px;
         line-height: 106px;
         min-height: 48px
@@ -184,12 +192,9 @@
     text-shadow: 0 0 10px hsla(0, 0%, 100%, .25)
 }
 
-.message-container {
-    width: 70%
-}
-
-.message-container {
-    margin: 0 auto
+.message-container-inner {
+    width: 70%;
+    margin: 0 auto;
 }
 
 .lyrics-list-full {
@@ -199,7 +204,7 @@
 .lyrics-list-full a {
     background-color: #dddddd20;
     line-height: 1.4em;
-    color: white;
+    color: var(--modspotify_main_fg);
 }
 
 .lyrics-list-full a:hover {

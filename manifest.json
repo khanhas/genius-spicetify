@@ -1,65 +1,12 @@
 {
+  "Musixmatch" : {
+    "UserToken": "200501593b603a3fdc5c9b4a696389f6589dd988e5a1cf02dfdce1"
+  },
   "BundleIdentifier": "genius",
   "BundleType": "Application",
   "BundleVersion": "1.1.22",
   "VendorIdentifier": "com.spotify",
-  "UserInstallable": false,
-  "AppDescription": {
-    "en": "",
-    "ar": "",
-    "cs": "",
-    "de": "",
-    "el": "",
-    "es": "",
-    "es-419": "",
-    "fi": "",
-    "fr": "",
-    "fr-CA": "",
-    "he": "",
-    "hu": "",
-    "id": "",
-    "it": "",
-    "ja": "",
-    "ko": "",
-    "nl": "",
-    "pl": "",
-    "pt-BR": "",
-    "ru": "",
-    "sv": "",
-    "th": "",
-    "tr": "",
-    "vi": "",
-    "zh-Hant": "",
-    "ms": ""
-  },
-  "AppName": {
-    "en": "Genius",
-    "ar": "Genius",
-    "cs": "Genius",
-    "de": "Genius",
-    "el": "Genius",
-    "es": "Genius",
-    "es-419": "Genius",
-    "fi": "Genius",
-    "fr": "Genius",
-    "fr-CA": "Genius",
-    "he": "Genius",
-    "hu": "Genius",
-    "id": "Genius",
-    "it": "Genius",
-    "ja": "Genius",
-    "ko": "Genius",
-    "nl": "Genius",
-    "pl": "Genius",
-    "pt-BR": "Genius",
-    "ru": "Genius",
-    "sv": "Genius",
-    "th": "Genius",
-    "tr": "Genius",
-    "vi": "Genius",
-    "zh-Hant": "Genius",
-    "ms": "Genius"
-  },
+  "AppName": "Genius",
   "SupportedLanguages": [
     "ar",
     "cs",
@@ -87,22 +34,5 @@
     "vi",
     "zh-Hant",
     "ms"
-  ],
-  "SupportedDeviceClasses": [
-    "Desktop"
-  ],
-  "BridgeDependencies": {
-    "bridge-desktop": "0.25.0",
-    "bridge-web": "2.50.0",
-    "bridge-zelda": "1.0.0"
-  },
-  "Dependencies": {
-    "api": "1.0.0"
-  },
-  "InjectScripts": false,
-  "InjectStylesheets": false,
-  "SkipLanguageValidation": true,
-  "SkipUnrequireValidation": true,
-  "SpmApp": true,
-  "GitRevision": "1bab253a32"
+  ]
 }
