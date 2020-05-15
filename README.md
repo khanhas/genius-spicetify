@@ -6,7 +6,7 @@ Spotify desktop client app fetches lyrics from Genius and Musixmatch
 ![demo2](https://i.imgur.com/dIkxWQ2.gif)
 
 ## How to install
-0. Make sure [spicetify-cli]() is installed and run `spicetify apply` normally.
+0. Make sure [spicetify-cli](https://github.com/khanhas/spicetify-cli) is installed and run `spicetify apply` normally.
 1. Run these commands, one by one:
   
 **Linux and MacOS** in Bash:
