@@ -80,8 +80,7 @@ LyricApp.prototype.initGenius = function() {
         });
     }
 
-    async function getNote(el) {
-        const id = el.getAttribute("data-id");
+    async function getNote(el, id) {
         const response = await getJSON(`https://genius.com/api/annotations/${id}`);
             
         let note = "";
@@ -110,8 +109,12 @@ LyricApp.prototype.initGenius = function() {
 
     const lyricObserver = new window.MutationObserver(changed => {
         for (const note of this.container.getElementsByTagName("a")) {
-            note.setAttribute("href", `https://genius.com/${note.getAttribute("data-id")}`);
-            getNote(note);
+            const id = note.getAttribute("href").match(/\/(\d+)\//);
+            if (!id) {
+                return;
+            }
+            note.setAttribute("href", `https://genius.com/${id[1]}`);
+            getNote(note, id[1]);
         }
     });
     lyricObserver.observe(this.container, { childList: true, subtree: true });
@@ -134,8 +137,16 @@ LyricApp.prototype.fetchGenius = function(info) {
         }
 
         cosmosAPI.resolver.get(json.hits[0].result.url, (error, geniusSite) => {
-            const lyrics = geniusSite._body.match(/<div class="lyrics">(.+?)<\/div>/s)[1];
-            this.container.innerHTML = `<div class="lyrics-list-full">${lyrics}</div>`;
+            if (error) {
+                this._handleFetchLyrics({}, info);
+                return;
+            }
+            const lyrics = geniusSite._body.match(/<div class="Lyrics__Container.+?>(.+?)<\/div>/s);
+            if (!lyrics) {
+                console.log("Could not parse lyric or lyric does not exist. If problem persists, file an Issue on https://github.com/khanhas/genius-spicetify");
+                return;
+            }
+            this.container.innerHTML = `<div class="lyrics-list-full">${lyrics[1]}</div>`;
         })
     })
 };
@@ -191,6 +202,7 @@ LyricApp.prototype.fetchMusixmatch = function(info) {
 
             if (body["matcher.track.get"].message.header.status_code !== 200) {
                 console.info(`Requested error: ${body["matcher.track.get"].message.header.mode}`, info);
+                this._handleFetchLyrics({}, info);
                 return;
             }
 
@@ -198,7 +210,6 @@ LyricApp.prototype.fetchMusixmatch = function(info) {
             const hasSynced = meta.track.has_subtitles;
             const hasNoSynced = meta.track.has_lyrics;
 
-            console.log(hasNoSynced)
             if (hasSynced) {
                 // TODO: Support multiple subtitle choices
                 const subtitle = body["track.subtitles.get"].message.body.subtitle_list[0].subtitle;
