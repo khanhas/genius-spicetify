@@ -12,15 +12,13 @@ Spotify desktop client app fetches lyrics from Genius and Musixmatch
 **Linux and MacOS** in Bash:
 ```bash
 cd "$(dirname "$(spicetify -c)")/CustomApps"
-git clone https://github.com/khanhas/genius-spicetify
-mv "genius-spicetify" genius
+git clone https://github.com/khanhas/genius-spicetify genius
 ```
 
 **Windows** in Powershell:
 ```powershell
 cd "$(spicetify -c | Split-Path)\CustomApps"
-git clone https://github.com/khanhas/genius-spicetify
-Rename-Item "genius-spicetify" genius
+git clone https://github.com/khanhas/genius-spicetify genius
 ```
 
 3. Finally, run:
