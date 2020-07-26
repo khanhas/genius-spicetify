@@ -3,49 +3,6 @@
     display: block
 }
 
-.attribution-container {
-    top: 48px;
-    z-index: 1;
-    height: 1em;
-    color: var(--modspotify_main_fg);
-    margin: 1em 2em;
-    font-size: x-large;
-    font-weight: 300;
-}
-
-.lyrics-header .track {
-    font-size: medium;
-    color: var(--modspotify_main_fg)
-}
-
-.lyrics-color-container {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    transition: background-color .5s ease-in-out;
-    background: var(--modspotify_sidebar_and_player_bg);
-    left: 0;
-    right: 0
-}
-
-.lyrics-color-container.message-background {
-    background-color: #165579;
-}
-
-.online-container {
-    color: var(--modspotify_main_fg);
-    font-weight: 700;
-    position: absolute;
-    top: 48px;
-    bottom: 48px;
-    overflow-y: scroll
-}
-
-.online-container {
-    left: 0;
-    right: 0
-}
-
 .lyrics-lines-container,
 .message-container {
     position: absolute;
@@ -53,6 +10,7 @@
     bottom: 0;
     left: 0;
     right: 0;
+    color: var(--modspotify_secondary_fg);
 }
 
 .message-container{
@@ -67,6 +25,7 @@
 .lyrics-lines-container p,
 .lyrics-lines-container .lyrics-list-full,
 .message-container h1 {
+    font-weight: 700;
     font-size: 36px;
     line-height: 54px;
     min-height: 36px
@@ -81,43 +40,11 @@
         line-height: 68px;
         min-height: 36px
     }
-}
 
-@media (min-width:1280px) and (min-height:768px) {
-    .lyrics-lines-container h1,
-    .lyrics-lines-container p,
-    .lyrics-lines-container .lyrics-list-full,
-    .message-container h1 {
-        font-size: 48px;
-        line-height: 106px;
-        min-height: 48px
-    }
-}
-
-.lyrics-list-full br {
-    margin-bottom: 36px
-}
-
-@media (min-width:820px) and (min-height:768px) {
     .lyrics-list-full br {
         margin-bottom: 48px
     }
-}
 
-@media (min-width:1280px) and (min-height:768px) {
-    .lyrics-list-full br {
-        margin-bottom: 72px
-    }
-}
-
-.message-container p {
-    font-weight: 400;
-    font-size: 16px;
-    min-height: 16px;
-    line-height: 16px
-}
-
-@media (min-width:820px) and (min-height:768px) {
     .message-container p {
         font-size: 18px;
         min-height: 18px;
@@ -126,6 +53,23 @@
 }
 
 @media (min-width:1280px) and (min-height:768px) {
+    .lyrics-lines-container,
+    .message-container {
+        top: 30%;
+    }
+    .lyrics-lines-container h1,
+    .lyrics-lines-container p,
+    .lyrics-lines-container .lyrics-list-full,
+    .message-container h1 {
+        font-size: 48px;
+        line-height: 86px;
+        min-height: 48px
+    }
+
+    .lyrics-list-full br {
+        margin-bottom: 72px
+    }
+
     .message-container p {
         font-size: 28px;
         min-height: 28px;
@@ -133,22 +77,30 @@
     }
 }
 
-.lyrics-lines-container .lyrics-list-animated {
-    width: 70%
+.lyrics-list-full br {
+    margin-bottom: 36px
 }
 
-.lyrics-lines-container .lyrics-list-animated {
-    margin: 0 auto
+
+.message-container p {
+    font-weight: 400;
+    font-size: 16px;
+    min-height: 16px;
+    line-height: 16px
 }
 
+
 .lyrics-lines-container .lyrics-list-animated {
-    height: calc(100% - 18px)
+    width: 70%;
+    margin: 0 auto;
+    height: calc(100% - 18px);
 }
 
 .lyrics-lines-container .lyrics-list-animated .lyrics-line {
     position: absolute;
     transition: top .25s, opacity .25s, font-size .25s, color .25s;
-    width: 70%
+    width: 70%;
+    color: var(--modspotify_secondary_fg);
 }
 
 .lyrics-lines-container .lyrics-list-animated .lyrics-line {
@@ -166,30 +118,22 @@
 .lyrics-lines-container .lyrics-list-animated .lyrics-line[data-animation-index="2"],
 .lyrics-lines-container .lyrics-list-animated .lyrics-line[data-animation-index="3"] {
     opacity: .5;
-    color: var(--modspotify_sidebar_and_player_bg)
 }
 
 .lyrics-lines-container .lyrics-list-animated .lyrics-line[data-animation-index="4"] {
     opacity: 0;
-    color: var(--modspotify_sidebar_and_player_bg)
 }
 
 .lyrics-lines-container .lyrics-list-full {
-    width: 70%
-}
-
-.lyrics-lines-container .lyrics-list-full {
-    margin: 0 auto
+    width: 70%;
+    margin: 0 auto;
 }
 
 .lyrics-lines-container .no-lyrics-message {
     width: 70%;
-    color: var(--modspotify_sidebar_and_player_bg)
-}
-
-.lyrics-lines-container .no-lyrics-message {
+    color: var(--modspotify_sidebar_and_player_bg);
     margin: 0 auto;
-    text-shadow: 0 0 10px hsla(0, 0%, 100%, .25)
+    text-shadow: 0 0 10px hsla(0, 0%, 100%, .25);
 }
 
 .message-container-inner {
@@ -210,3 +154,18 @@
 .lyrics-list-full a:hover {
     background-color: rgba(var(--modspotify_rgb_main_fg), .12);
 }
+
+.navbar {
+    right: 0px;
+    left: 0px;
+    position: fixed;
+    top: 48px;
+}
+
+.glue-page-header__background-scroll-overlay {
+    position: fixed;
+    height: 92px;
+    opacity: 1;
+    z-index: 1000;
+}
+

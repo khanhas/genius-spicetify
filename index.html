@@ -8,13 +8,15 @@
     <link rel="stylesheet" class="userCSS" href="https://zlink.app.spotify.com/css/user.css">
   </head>
   <body>
-    <div class="lyrics-color-container">
-      <div class="online-container">
-        <div id="lyrics-lines-container" class="lyrics-lines-container"></div>
-        <div id="message-container" class="message-container hidden"></div>
-        <div id="attribution-container" class="attribution-container"></div>
+    <div class="glue-page-header__background-scroll-overlay"></div>
+    <div class="navbar sticky-top" data-sticky="true">
+      <div class="container">
+        <ul class="nav navbar-nav " data-navbar="navbar" data-navbar-history-position="" style="visibility: visible;">
+        </ul>
       </div>
     </div>
+    <div id="lyrics-lines-container" class="lyrics-lines-container"></div>
+    <div id="message-container" class="message-container hidden"></div>
     <div id="error"></div>
     <!-- "init.js" is served by the desktop client and provides the "window.__spotify" object. -->
     <script src="init.js"></script>
