@@ -5,11 +5,7 @@
 
 .lyrics-lines-container,
 .message-container {
-    position: absolute;
-    top: 40%;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    position: relative;
     color: var(--modspotify_secondary_fg);
 }
 
@@ -53,10 +49,6 @@
 }
 
 @media (min-width:1280px) and (min-height:768px) {
-    .lyrics-lines-container,
-    .message-container {
-        top: 30%;
-    }
     .lyrics-lines-container h1,
     .lyrics-lines-container p,
     .lyrics-lines-container .lyrics-list-full,
@@ -169,3 +161,15 @@
     z-index: 1000;
 }
 
+#lyrics-versions-container {
+    padding-top: 20%;
+}
+
+#lyrics-versions {
+    width: 70%;
+    margin: 0 auto;
+}
+
+#lyrics-versions button {
+    margin-top: 5px;
+}
