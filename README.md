@@ -8,7 +8,7 @@ Spotify desktop client app fetches lyrics from Genius and Musixmatch
 ## How to install
 0. Make sure [spicetify-cli](https://github.com/khanhas/spicetify-cli) is installed and run `spicetify apply` normally.
 1. Run these commands, one by one:
-  
+
 **Linux and MacOS** in Bash:
 ```bash
 cd "$(dirname "$(spicetify -c)")/CustomApps"
@@ -21,6 +21,15 @@ cd "$(spicetify -c | Split-Path)\CustomApps"
 git clone https://github.com/khanhas/genius-spicetify genius
 ```
 
+Don't have GIT?, **Windows** in Powershell:
+```powershell
+cd "$(spicetify -c | Split-Path)\CustomApps"
+Invoke-WebRequest -Uri https://github.com/khanhas/genius-spicetify/archive/master.zip -UseBasicParsing -O
+utFile .\genius.zip
+Expand-Archive -Path .\genius.zip -DestinationPath .
+Rename-Item "genius-spicetify-master" "genius"
+```
+
 3. Finally, run:
 ```bash
 spicetify config custom_apps genius
@@ -28,7 +37,7 @@ spicetify apply
 ```
 
 ## How to update
-If you already installed before with those steps above, you just need to run these to update:  
+If you already installed before with those steps above, you just need to run these to update:
 **Linux and MacOS** in Bash:
 ```bash
 cd "$(dirname "$(spicetify -c)")/CustomApps/genius"
@@ -44,7 +53,7 @@ git pull
 ## Musicxmatch
 I already included a free user token to fetch full and synched lyrics from Musixmatch database. Since Musixmatch has limit rate per token, too many requests with same token will temperory block it from receiving result. Follow these steps to retrieve a personal token:
 
-1. Download and install Musixmatch offical app: https://download-app.musixmatch.com/download  
+1. Download and install Musixmatch offical app: https://download-app.musixmatch.com/download
 Windows user: install it via Windows Store.
 
 2. **You don't have to log in!**
