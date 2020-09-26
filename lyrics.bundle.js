@@ -139,9 +139,18 @@ LyricApp.prototype.fetchGenius = function(info) {
                 return;
             }
             let lyrics = geniusSite._body.match(/<div class="lyrics">(.+?)<\/div>/s);
-            if (!lyrics) {
-                lyrics = geniusSite._body.match(/<div class="Lyrics__Container.+?>(.+?)<\/div>/s);
-                if (!lyrics) {
+            if (lyrics) {
+                lyrics = lyrics[1];
+            } else {
+                const lyricsSections = geniusSite._body.match(/<div class="Lyrics__Container.+?>.+?<\/div>/sg);
+                lyrics = "";
+                for (const section of lyricsSections) {
+                    const fragment = section.match(/<div class="Lyrics__Container.+?>(.+?)<\/div>/s);
+                    if (fragment) {
+                        lyrics += fragment[1];
+                    }
+                }
+                if (!lyrics.length) {
                     eventTarget.dispatchEvent({
                         type: "forceError",
                         params: {
@@ -153,7 +162,7 @@ LyricApp.prototype.fetchGenius = function(info) {
                 }
             }
 
-            this._handleFetchLyrics({ lines: [lyrics[1]] }, info);
+            this._handleFetchLyrics({ lines: [lyrics] }, info);
         })
     }
     cosmosAPI.resolver.get(url, (error, geniusSearch) => {
