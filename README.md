@@ -24,8 +24,7 @@ git clone https://github.com/khanhas/genius-spicetify genius
 Don't have GIT?, **Windows** in Powershell:
 ```powershell
 cd "$(spicetify -c | Split-Path)\CustomApps"
-Invoke-WebRequest -Uri https://github.com/khanhas/genius-spicetify/archive/master.zip -UseBasicParsing -O
-utFile .\genius.zip
+Invoke-WebRequest -Uri https://github.com/khanhas/genius-spicetify/archive/master.zip -UseBasicParsing -OutFile .\genius.zip
 Expand-Archive -Path .\genius.zip -DestinationPath .
 Rename-Item "genius-spicetify-master" "genius"
 ```
