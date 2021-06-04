@@ -1,3 +1,5 @@
+Abandoned, in favor of [Lyrics Plus](https://github.com/khanhas/spicetify-cli/tree/master/CustomApps/lyrics-plus) for Spicetify v2.
+If you wish, you can still download and use genius-spicetify in Spotify v1.1.58 or older with Spicetify v1.2.1. Otherwise, check out Lyrics Plus, it has more Lyrics providers and customisability.
 # genius-spicetify
 Spotify desktop client app fetches lyrics from Genius and Musixmatch
 
